@@ -9,10 +9,11 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
+import { AppComponent } from "./app.component";
+import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { ProcessHTTPMsgService } from './services/process-http.service';
 
 import { baseURL } from './shared/baseurl';
-import { AppComponent } from "./app.component";
 
 @NgModule({
     bootstrap: [
@@ -26,7 +27,8 @@ import { AppComponent } from "./app.component";
     ],
     declarations: [
         AppComponent,
-        MenuComponent
+        MenuComponent, 
+        DishdetailComponent, 
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
