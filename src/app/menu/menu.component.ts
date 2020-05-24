@@ -11,6 +11,8 @@ import { DishService } from '../services/dish.service';
 })
 export class MenuComponent implements OnInit {
 
+  dish: Dish; 
+  dishErrMess: string; 
   dishes: Dish[];
   errMess: string;
   featured: Dish;
