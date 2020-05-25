@@ -14,6 +14,9 @@ import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { ProcessHTTPMsgService } from './services/process-http.service';
 
 import { baseURL } from './shared/baseurl';
+import { HomeComponent } from "./Home/home.component";
+import { PromotionService } from "./services/promotion.service";
+import { LeaderService } from "./services/leader.service";
 
 @NgModule({
     bootstrap: [
@@ -28,12 +31,15 @@ import { baseURL } from './shared/baseurl';
     ],
     declarations: [
         AppComponent,
-        MenuComponent, 
+        MenuComponent,
+        HomeComponent, 
         DishdetailComponent, 
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
         DishService,
+        LeaderService, 
+        PromotionService, 
         ProcessHTTPMsgService
     ],
     schemas: [
