@@ -8,6 +8,8 @@ import { Routes } from "@angular/router";
 import { MenuComponent } from "./menu/menu.component";
 import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { HomeComponent } from "./Home/home.component";
+import { ContactComponent } from "./contact/contact.component";
+import { AboutComponent } from "./aboutus/about.component";
 
 
 
@@ -17,6 +19,8 @@ const routes: Routes = [
     { path: "home", component: HomeComponent }, 
     { path: "menu", component: MenuComponent }, 
     { path: "dishdetail/:id", component: DishdetailComponent }, 
+    { path: "about", component: AboutComponent }, 
+    { path: "contact", component: ContactComponent }, 
 ]
 
 @NgModule({

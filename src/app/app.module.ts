@@ -7,16 +7,18 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 
 import { AppRoutingModule } from "./app-routing.module";
 
-import { MenuComponent } from './menu/menu.component';
 import { DishService } from './services/dish.service';
-import { AppComponent } from "./app.component";
-import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { ProcessHTTPMsgService } from './services/process-http.service';
-
+///
 import { baseURL } from './shared/baseurl';
+import { AppComponent } from "./app.component";
+import { MenuComponent } from './menu/menu.component';
+import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { HomeComponent } from "./Home/home.component";
 import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
+import { ContactComponent } from "./contact/contact.component";
+import { AboutComponent } from "./aboutus/about.component";
 
 @NgModule({
     bootstrap: [
@@ -34,6 +36,8 @@ import { LeaderService } from "./services/leader.service";
         MenuComponent,
         HomeComponent, 
         DishdetailComponent, 
+        ContactComponent, 
+        AboutComponent
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
