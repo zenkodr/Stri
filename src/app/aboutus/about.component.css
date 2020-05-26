@@ -2,19 +2,10 @@
     justify-content: center;
     padding-left: 30%;
 }
-body-history{
-    justify-content: center;
-    padding: auto;
-}
 .header{
     font-weight: bold;
     margin-bottom: 5%;
 }
-
-Label{
-    padding: 3;
-}
-
 
 .name{
     font-weight: bold;
