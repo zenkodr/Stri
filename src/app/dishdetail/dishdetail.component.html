@@ -10,9 +10,9 @@
                 <Label class="body" [text]="dish.description" textWrap="true"></Label>      
             </StackLayout>
             <GridLayout orientation="horizontal" rows="*" columns="*, *, *" class="m-t-20">
-                <Button row="0" col="0" [text]="avgstars + ' stars'" class="btn btn-rounded-sm btn-outline borders"></Button>
-                <Button row="0" col="1" [text]="numcomments + ' comments'" class="btn btn-rounded-sm btn-outline borders"></Button>
-                <Button row="0" col="2" [text]="(favorite ? '&#xf004;' : '&#xf08a;' )" class="btn btn-rounded-sm btn-outline borders fa filled-in" (tap)="addToFavorites()"></Button>
+                <Button row="0" col="0" [text]="avgstars + ' stars'" class="btn btn-rounded-sm btn-outline color"></Button>
+                <Button row="0" col="1" [text]="numcomments + ' comments'" class="btn btn-rounded-sm btn-outline color"></Button>
+                <Button row="0" col="2" [text]="(favorite ? '&#xf004;' : '&#xf08a;' )" class="btn btn-rounded-sm btn-outline color fa filled-in" (tap)="addToFavorites()"></Button>
             </GridLayout>
         </StackLayout>
         <Label row="1" height="40" class="p-10 m-t-10 h3" text="Comments"></Label>
