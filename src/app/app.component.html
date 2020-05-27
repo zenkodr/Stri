@@ -7,18 +7,29 @@
 
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
-                <GridLayout columns="auto" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+
+                <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf015;"></Label>
                     <Label col="1" text="Home" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-                <GridLayout columns="auto" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/menu')" (tap)="onNavItemTap('/menu')">
-                    <Label col="1" text="Menu" class="sidedrawer-list-item-text"></Label>
-                </GridLayout>
-                <GridLayout columns="auto" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
+               
+                <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf05a;"></Label>
                     <Label col="1" text="About Us" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-                <GridLayout columns="auto" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/contact')" (tap)="onNavItemTap('/contact')">
+                
+
+                <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/menu')" (tap)="onNavItemTap('/menu')">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf022;"></Label>
+                    <Label col="1" text="Menu" class="sidedrawer-list-item-text"></Label>
+                </GridLayout>
+
+
+                <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/contact')" (tap)="onNavItemTap('/contact')">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf2bb;"></Label>
                     <Label col="1" text="Contact Us" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
+
             </StackLayout>
         </ScrollView>
     </GridLayout>

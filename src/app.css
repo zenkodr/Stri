@@ -11,6 +11,8 @@ NativeScript core theme at https://github.com/nativescript/theme
 The imported CSS rules must precede all other types of rules.
 */
 @import "~@nativescript/theme/css/purple.css";
+@import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/default.css";
 /*@import "~@nativescript/theme/css/default.css";*/
 
 /* Place any CSS rules you want to apply on both iOS and Android here.
@@ -59,4 +61,7 @@ Button.-primary {
 .selected {
     background-color: #B39DDB;
     color: blue;
+}
+.fa {
+    font-family: FontAwesome, fontawesome-webfont;
 }
