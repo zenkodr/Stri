@@ -10,6 +10,7 @@ import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { HomeComponent } from "./Home/home.component";
 import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./aboutus/about.component";
+import { FavoritesComponent } from "./favorites/favorites.component";
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
     { path: "menu", component: MenuComponent }, 
     { path: "dishdetail/:id", component: DishdetailComponent }, 
     { path: "about", component: AboutComponent }, 
+    { path: "favorites", component: FavoritesComponent }, 
     { path: "contact", component: ContactComponent }, 
 ]
 
