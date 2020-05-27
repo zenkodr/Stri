@@ -3,6 +3,8 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { HttpClientModule } from "@angular/common/http";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
+
 ///
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -20,6 +22,7 @@ import { LeaderService } from "./services/leader.service";
 import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./aboutus/about.component";
 import { FavoriteService } from "./services/favorite.service";
+import { FavoritesComponent } from "./favorites/favorites.component";
 
 @NgModule({
     bootstrap: [
@@ -30,7 +33,8 @@ import { FavoriteService } from "./services/favorite.service";
         NativeScriptModule,
         NativeScriptHttpClientModule,
         HttpClientModule, 
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule, 
+        NativeScriptUIListViewModule
     ],
     declarations: [
         AppComponent,
@@ -38,7 +42,8 @@ import { FavoriteService } from "./services/favorite.service";
         HomeComponent, 
         DishdetailComponent, 
         ContactComponent, 
-        AboutComponent
+        AboutComponent, 
+        FavoritesComponent
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
