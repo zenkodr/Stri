@@ -19,6 +19,7 @@ import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
 import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./aboutus/about.component";
+import { FavoriteService } from "./services/favorite.service";
 
 @NgModule({
     bootstrap: [
@@ -44,7 +45,8 @@ import { AboutComponent } from "./aboutus/about.component";
         DishService,
         LeaderService, 
         PromotionService, 
-        ProcessHTTPMsgService
+        ProcessHTTPMsgService, 
+        FavoriteService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
