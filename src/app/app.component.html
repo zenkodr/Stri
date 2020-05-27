@@ -24,6 +24,11 @@
                     <Label col="1" text="Menu" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
 
+                <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/favorites')" (tap)="onNavItemTap('/favorites')">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf004;"></Label>
+                    <Label col="1" text="Favorites" class="sidedrawer-list-item-text"></Label>
+                </GridLayout>
+
 
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/contact')" (tap)="onNavItemTap('/contact')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf2bb;"></Label>
