@@ -25,6 +25,7 @@ import { AboutComponent } from "./aboutus/about.component";
 import { FavoriteService } from "./services/favorite.service";
 import { FavoritesComponent } from "./favorites/favorites.component";
 import { ReservationComponent } from "./reservation/reservation.component";
+import { ReservationModalComponent } from "./reservationModal/reservationmodal.component";
 
 @NgModule({
     bootstrap: [
@@ -49,7 +50,11 @@ import { ReservationComponent } from "./reservation/reservation.component";
         AboutComponent, 
         FavoritesComponent, 
         ReservationComponent,
+        ReservationModalComponent
     ],
+    entryComponents: [
+        ReservationModalComponent
+    ], 
     providers: [
         {provide: 'baseURL', useValue: baseURL},
         DishService,
