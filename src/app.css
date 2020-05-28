@@ -31,16 +31,16 @@ Button.-primary {
     border-radius: 5;
 }
 .sidedrawer-left {
-    background-color: #D1C4E9;
+    background-color: white;
 }
 
 .sidedrawer-header {
-    background-color: #512DA8;
+    background-color: rgb(191, 218, 196);
 }
 
 .sidedrawer-header .sidedrawer-header-image {
-    background-color: #512DA8;
-    margin: 10;
+    background-color: rgb(191, 218, 196);
+    margin: 0;
 }
 
 .sidedrawer-header .sidedrawer-header-brand {
@@ -59,8 +59,8 @@ Button.-primary {
 }
 
 .selected {
-    background-color: #B39DDB;
-    color: blue;
+    background-color: rgb(226, 243, 229);
+    color: rgb(205, 207, 40);
 }
 .fa {
     font-family: FontAwesome, fontawesome-webfont;
