@@ -4,7 +4,8 @@ import { NativeScriptHttpClientModule } from "nativescript-angular/http-client";
 import { HttpClientModule } from "@angular/common/http";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
-
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 ///
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -23,6 +24,7 @@ import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./aboutus/about.component";
 import { FavoriteService } from "./services/favorite.service";
 import { FavoritesComponent } from "./favorites/favorites.component";
+import { ReservationComponent } from "./reservation/reservation.component";
 
 @NgModule({
     bootstrap: [
@@ -34,7 +36,9 @@ import { FavoritesComponent } from "./favorites/favorites.component";
         NativeScriptHttpClientModule,
         HttpClientModule, 
         NativeScriptUISideDrawerModule, 
-        NativeScriptUIListViewModule
+        NativeScriptUIListViewModule, 
+        NativeScriptFormsModule, 
+        ReactiveFormsModule, 
     ],
     declarations: [
         AppComponent,
@@ -43,7 +47,8 @@ import { FavoritesComponent } from "./favorites/favorites.component";
         DishdetailComponent, 
         ContactComponent, 
         AboutComponent, 
-        FavoritesComponent
+        FavoritesComponent, 
+        ReservationComponent,
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
