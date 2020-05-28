@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild} from "@angular/core";
 import { ObservableArray } from "tns-core-modules/data/observable-array/observable-array";
-
+import { ListViewEventData } from "nativescript-ui-listview";
+import { View } from "tns-core-modules/ui/page/page";
+import { confirm } from "tns-core-modules/ui/dialogs";
+import { Toasty, ToastPosition, ToastDuration } from "nativescript-toasty";
 ///
 import { Dish } from "../shared/dish";
 import { RadListViewComponent } from "nativescript-ui-listview/angular/listview-directives";
 import { FavoriteService } from "../services/favorite.service";
-import { ListViewEventData } from "nativescript-ui-listview";
-import { View } from "tns-core-modules/ui/page/page";
 
 @Component({
     selector: 'app-favorites', 
@@ -33,9 +34,34 @@ export class FavoritesComponent implements OnInit{
     }
 
     deleteFavorite(id: number){
-        this.favoriteService.deleteFavorite(id)
-             .subscribe(favorites =>this.favorites = new ObservableArray(favorites), 
-             errmess => this.errMess = errmess); 
+
+        let options = {
+            title : "Confirm Delete", 
+            message: "Do you want to delete dish " + id, 
+            okButtonText: 'Yes', 
+            cancelButtonText: 'No', 
+            neutralButtonText: 'Cancel'
+        }; 
+
+        confirm(options)
+            .then((result: boolean) => {
+                if(result) {
+                    
+                    this.favorites = null;
+
+                    this.favoriteService.deleteFavorite(id)
+                    .subscribe(favorites => {
+                        const toast = new Toasty({ text: "Deleted Dish "+ id});
+                        toast.setToastPosition(ToastPosition.BOTTOM); 
+                        toast.setToastDuration(ToastDuration.SHORT)
+                        toast.show();
+                        this.favorites = new ObservableArray(favorites)
+                    }, 
+                    errmess => this.errMess = errmess); 
+                }else{
+                    console.log('Delete cancelled')
+                }
+            });
     }
 
     public onCellSwiping(args: ListViewEventData){
