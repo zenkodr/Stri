@@ -7,6 +7,7 @@ import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
 import { DishService } from '../services/dish.service';
 import { FavoriteService } from '../services/favorite.service';
+import { Toasty, ToastPosition, ToastDuration } from 'nativescript-toasty';
 
 @Component({
     selector: 'app-dishdetail',
@@ -49,6 +50,12 @@ import { FavoriteService } from '../services/favorite.service';
           addToFavorites(){
             if(!this.favorite){
               this.favorite  = this.favoriteService.addFavorite(this.dish.id);
+
+              const toast = new Toasty({text: 'Added dish ' + this.dish.id}); 
+              toast.setToastPosition(ToastPosition.CENTER); 
+              toast.setToastDuration(ToastDuration.LONG); 
+              toast.show();  
+              
             }
           }
           
