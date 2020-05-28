@@ -11,6 +11,7 @@ import { HomeComponent } from "./Home/home.component";
 import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./aboutus/about.component";
 import { FavoritesComponent } from "./favorites/favorites.component";
+import { ReservationComponent } from "./reservation/reservation.component";
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     { path: "dishdetail/:id", component: DishdetailComponent }, 
     { path: "about", component: AboutComponent }, 
     { path: "favorites", component: FavoritesComponent }, 
+    { path: "reservation", component: ReservationComponent }, 
     { path: "contact", component: ContactComponent }, 
 ]
 
