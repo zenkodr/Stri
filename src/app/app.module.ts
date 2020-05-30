@@ -27,6 +27,7 @@ import { FavoritesComponent } from "./favorites/favorites.component";
 import { ReservationComponent } from "./reservation/reservation.component";
 import { ReservationModalComponent } from "./reservationModal/reservationmodal.component";
 import { CommentComponent } from "./comment/comment.component";
+import { CouchbaseService } from "./services/couchbase.service";
 
 @NgModule({
     bootstrap: [
@@ -63,7 +64,8 @@ import { CommentComponent } from "./comment/comment.component";
         LeaderService, 
         PromotionService, 
         ProcessHTTPMsgService, 
-        FavoriteService
+        FavoriteService, 
+        CouchbaseService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
