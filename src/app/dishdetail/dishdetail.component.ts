@@ -41,18 +41,18 @@ import { baseURL } from '../shared/baseurl';
   
     ngOnInit() {
       this.route.params
-      
         .pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
         .subscribe(dish => {
           this.dish = dish
           this.favorite = this.favoriteService.isFavorite(this.dish.id); 
-          console.log(Object.keys(this.dish.comments))
-          //compute the average of ratings and render the number of comments
-          this.numcomments =  this.dish.comments.length;           
-          let total =0; 
-          this.dish.comments.forEach(comment =>total += comment.rating); 
-          this.avgstars = (total/this.numcomments).toFixed(2); 
-            },
+          
+            //compute the average of the comments and the render the length of the array
+            const commentIds  = Object.keys(this.dish.comments);
+            this.numcomments =  commentIds.length;           
+            let total = 0; 
+            commentIds.forEach(commentId => total += this.dish.comments[commentId].rating); 
+            this.avgstars = (total/this.numcomments).toFixed(2) || null;
+             },
             errmess => this.errMess = <any>errmess); 
           }
 
@@ -108,16 +108,18 @@ import { baseURL } from '../shared/baseurl';
                   date: n
               };
                this.http.post(baseURL + 'dishes/' + this.dish.id + '/comments.json', this.comment)
-                .subscribe(res => {
-                  console.log(Object.keys(res))
-                })
-                let total = 0;
-                this.numcomments = this.dish.comments.length;
-                this.dish.comments.forEach(comment => total += comment.rating);
-                this.avgstars = (total/this.numcomments).toFixed(2);
-               // this.dish.comments.push(this.comment);
-               
-              
+               .subscribe(() => {
+                this.favorite = this.favoriteService.isFavorite(this.dish.id); 
+                
+                  //compute the average of the comments and the render the length of the array
+                  const commentIds  = Object.keys(this.dish.comments);
+                  this.numcomments =  commentIds.length;           
+                  let total = 0; 
+                  commentIds.forEach(commentId => total += this.dish.comments[commentId].rating); 
+                  this.avgstars = (total/this.numcomments).toFixed(2) || null;
+                   },
+                  errmess => this.errMess = <any>errmess); 
+             
           });
     }
   }
