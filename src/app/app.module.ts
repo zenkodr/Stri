@@ -26,7 +26,10 @@ import { FavoriteService } from "./services/favorite.service";
 import { FavoritesComponent } from "./favorites/favorites.component";
 import { ReservationComponent } from "./reservation/reservation.component";
 import { ReservationModalComponent } from "./reservationModal/reservationmodal.component";
+<<<<<<< HEAD
 import { CommentComponent } from "./comment/comment.component";
+=======
+>>>>>>> 5cdc781b8caac398d60aa2e11d181289d1321195
 
 @NgModule({
     bootstrap: [
@@ -51,11 +54,18 @@ import { CommentComponent } from "./comment/comment.component";
         AboutComponent, 
         FavoritesComponent, 
         ReservationComponent,
+<<<<<<< HEAD
         ReservationModalComponent, 
         CommentComponent
     ],
     entryComponents: [
         ReservationModalComponent, CommentComponent
+=======
+        ReservationModalComponent
+    ],
+    entryComponents: [
+        ReservationModalComponent
+>>>>>>> 5cdc781b8caac398d60aa2e11d181289d1321195
     ], 
     providers: [
         {provide: 'baseURL', useValue: baseURL},
