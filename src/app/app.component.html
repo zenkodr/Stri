@@ -8,6 +8,10 @@
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
 
+                <GridLayout columns="* 100" class="sidedrawer-list-item" (tap)="displayLoginDialog()">
+                    <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf090;"></Label>
+                    <Label col="1" text="Login" class="sidedrawer-list-item-text"></Label>
+                </GridLayout>
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf015;"></Label>
                     <Label col="1" text="Home" class="sidedrawer-list-item-text"></Label>
