@@ -6,6 +6,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
 import { ProcessHTTPMsgService } from './process-http.service';
+import { Comment } from '../shared/comment';
 
 @Injectable({
   providedIn: 'root'
