@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application"; 
+import * as Email from 'nativescript-email';
 
 @Component({
     selector: 'app-contact', 
@@ -22,5 +23,22 @@ export class ContactComponent implements OnInit {
 
     goBack(){
         this.RE.back(); 
+    }
+
+    sendEmail(){
+        Email.available()
+        .then((avail: boolean)=> {
+
+            if(avail){
+                Email.compose({
+                    to: ['walid.bouguima@gmail.com'], 
+                    subject: '[Service]: Transaction', 
+                    body: 'Dear sir/madame'
+                })
+            }
+            else{
+                console.log('No email configured in this device');
+            }
+        })
     }
 }

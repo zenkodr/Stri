@@ -20,5 +20,18 @@
                     Tel: +852 1234 5678
                     Fax: +852 8765 4321
                     Email:confusion@food.net"></Label>
+    <GridLayout orientation="horizontal" rows="*" columns="*,*" class="m-t-20">
+        <Button 
+        row="0" 
+        col="0" 
+        [text]="('&#xf095; Call')" 
+        class="btn btn-rounded-sm btn-outline color fa"></Button>
+        <Button 
+        row="0" 
+        col="1" 
+        [text]="('&#xf003; Email')" 
+        class="btn btn-rounded-sm btn-outline color fa" 
+        (tap)="sendEmail()"></Button>
+    </GridLayout>
 </StackLayout>
 </GridLayout>
