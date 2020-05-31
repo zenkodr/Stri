@@ -6,6 +6,8 @@ import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/mod
 import { ReservationModalComponent } from '../reservationModal/reservationmodal.component';
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 import * as app from "tns-core-modules/application"; 
+import { View, Page } from 'tns-core-modules/ui/page/page';
+import { CouchbaseService } from '../services/couchbase.service';
 
 @Component({
     selector: 'app-reservation',
@@ -15,11 +17,19 @@ import * as app from "tns-core-modules/application";
 export class ReservationComponent implements OnInit {
 
     reservation: FormGroup;
+    reservationForm: View;
+    reservationInfoCard: View;
+    reservationInfo;
+    docId: string = "reservations";
+    reservations: Array<any>;
+
 
     constructor(
         private formBuilder: FormBuilder, 
         private modalService: ModalDialogService, 
-        private vcRef: ViewContainerRef) {
+        private vcRef: ViewContainerRef, 
+        private couchbaseService: CouchbaseService, 
+        private page: Page) {
 
             this.reservation = this.formBuilder.group({
                 guests: 3,
@@ -80,7 +90,29 @@ export class ReservationComponent implements OnInit {
     }
 
     onSubmit() {
-        console.log(JSON.stringify(this.reservation.value));
-        this.reservation.reset(); 
+        this.reservations =[];
+        this.reservationForm = <View>this.page.getViewById<View>("reservationForm");
+        this.reservationInfo = this.reservation.value;
+        let doc = this.couchbaseService.getDocument(this.docId);
+        if (doc == null) {
+            this.couchbaseService.createDocument({ "reservations": [] }, this.docId);
+        }
+        doc = this.couchbaseService.getDocument(this.docId);
+        console.log(JSON.stringify(doc));
+        this.reservations = doc.reservations;
+        this.reservations.push(this.reservationInfo);
+        this.couchbaseService.updateDocument(this.docId, { "reservations": this.reservations });
+        this.reservationForm.animate({
+            duration: 500,
+            opacity: 0,
+            scale: { x: 0, y: 0 }
+        }).then(() => {
+            this.reservationInfoCard = <View>this.page.getViewById<View>("reservationInfo");
+            this.reservationInfoCard.animate({
+                duration: 500,
+                opacity: 1,
+                scale: { x: 1, y: 1 }
+            })
+        });
     }
 }

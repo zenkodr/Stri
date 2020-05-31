@@ -11,7 +11,15 @@
     </ActionItem>
 </ActionBar>
 <ScrollView orientation="vertical" tkMainContent class="page">
-    <GridLayout class="m-5" rows="auto auto auto auto" columns="*, *" [formGroup]="reservation">
+    <GridLayout class="m-5" rows="auto auto auto auto" columns="*, *" opacity="0" scaleX="0" scaleY="0" id="reservationInfo" *ngIf="reservationInfo">
+        <Label class="h3 m-15" text="No. of Guests" row="0" col="0"></Label>
+        <Label class="body m-15" [text]="reservationInfo.guests" row="0" col="1"></Label>
+        <Label class="h3 m-15" text="Smoking?" row="1" col="0"></Label>
+        <Label class="body m-15" [text]="reservationInfo.smoking" row="1" col="1"></Label>
+        <Label class="h3 m-15" text="Date and Time" row="2" col="0"></Label>
+        <Label class="body m-15" [text]="reservationInfo.dateTime | date:medium" row="2" col="1"></Label>
+    </GridLayout>
+    <GridLayout class="m-5" rows="auto auto auto auto" columns="*, *" [formGroup]="reservation" id="reservationForm">
         <Label class="h3 m-15" row="0" col="0" text="No. of Guests" textWrap="true"></Label>
         <TextField class="input input-border" id="textGuests"
         hint="Enter Number of Guests" [text]=''
@@ -28,6 +36,6 @@
         (textChange)="onDateTimeChange($event)"
         row="2" col="1" formControlName="dateTime"></TextField>
         <Button class="btn btn-primary btn-active m-15" row="3" col="0"
-            text="Submit" (tap)="onSubmit()"></Button>
+            text="Submit" (tap)="onSubmit()" [isEnabled]="reservation.valid"></Button>
     </GridLayout>
 </ScrollView>
