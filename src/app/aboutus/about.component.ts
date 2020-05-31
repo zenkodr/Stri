@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { Leader } from "../shared/leader";
 import { LeaderService } from "../services/leader.service";
 import { RouterExtensions } from "nativescript-angular/router";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application"
 
 @Component({
     selector: 'app-about', 
@@ -22,6 +24,10 @@ export class AboutComponent implements OnInit {
           errmess => this.errMess = <any> errmess);
     }  
 
+    onDrawerButtonTap(): void {
+      const sideDrawer = <RadSideDrawer>app.getRootView();
+      sideDrawer.showDrawer();
+  }
     goBack(){
       this.RouterExtension.back(); 
     }

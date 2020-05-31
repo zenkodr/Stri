@@ -25,26 +25,30 @@ The following CSS rule changes the font size of all Buttons that have the
 Button.-primary {
     font-size: 18;
 }
+
+action-bar{
+    background-color: red;
+}
 .border{
-    border-width: 1; 
+    border-width: 1;
     border-color: #9f9f9f;
     border-radius: 5;
 }
 .sidedrawer-left {
-    background-color: white;
+    background-color: whitesmoke;
 }
 
 .sidedrawer-header {
-    background-color: rgb(191, 218, 196);
+    background-color: whitesmoke; 
 }
 
 .sidedrawer-header .sidedrawer-header-image {
-    background-color: rgb(191, 218, 196);
+    background-color: transparent;
     margin: 0;
 }
 
 .sidedrawer-header .sidedrawer-header-brand {
-    color: #ffffff;
+    color: black;
     font-size: 30;
 }
 
@@ -59,8 +63,8 @@ Button.-primary {
 }
 
 .selected {
-    background-color: rgb(226, 243, 229);
-    color: rgb(205, 207, 40);
+    background-color: blanchedalmond;
+    color: rgb(250, 246, 248);
 }
 .fa {
     font-family: FontAwesome, fontawesome-webfont;

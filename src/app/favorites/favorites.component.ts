@@ -8,6 +8,8 @@ import { Toasty, ToastPosition, ToastDuration } from "nativescript-toasty";
 import { Dish } from "../shared/dish";
 import { RadListViewComponent } from "nativescript-ui-listview/angular/listview-directives";
 import { FavoriteService } from "../services/favorite.service";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
+import * as app from "tns-core-modules/application"; 
 
 @Component({
     selector: 'app-favorites', 
@@ -31,6 +33,11 @@ export class FavoritesComponent implements OnInit{
         this.favoriteService.getFavorites()
             .subscribe(favorites => this.favorites = new ObservableArray(favorites), 
             errmess => this.errMess = errmess); 
+    }
+
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
     }
 
     deleteFavorite(id: number){

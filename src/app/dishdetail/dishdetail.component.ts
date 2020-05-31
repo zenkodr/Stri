@@ -18,6 +18,8 @@ import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation";
 import { View, Color } from "tns-core-modules/ui/core/view";
 import { SwipeGestureEventData, SwipeDirection } from 'tns-core-modules/ui/gestures/gestures';
 import * as enums from "tns-core-modules/ui/enums";
+import * as app from "tns-core-modules/application"; 
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 
 @Component({
     selector: 'app-dishdetail',
@@ -79,6 +81,11 @@ import * as enums from "tns-core-modules/ui/enums";
               
             }
           }
+
+        onDrawerButtonTap(): void {
+            const sideDrawer = <RadSideDrawer>app.getRootView();
+            sideDrawer.showDrawer();
+        }
           
     goBack(): void {
       this.routerExtensions.back();

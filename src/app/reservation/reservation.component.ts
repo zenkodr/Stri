@@ -4,6 +4,8 @@ import { Validators, FormBuilder, FormGroup} from '@angular/forms';
 import { Switch } from 'tns-core-modules/ui/switch/switch';
 import { ModalDialogService, ModalDialogOptions } from 'nativescript-angular/modal-dialog';
 import { ReservationModalComponent } from '../reservationModal/reservationmodal.component';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as app from "tns-core-modules/application"; 
 
 @Component({
     selector: 'app-reservation',
@@ -28,6 +30,11 @@ export class ReservationComponent implements OnInit {
 
     ngOnInit() {
 
+    }
+
+    onDrawerButtonTap(): void {
+        const sideDrawer = <RadSideDrawer>app.getRootView();
+        sideDrawer.showDrawer();
     }
 
     onSmokingChecked(args) {
