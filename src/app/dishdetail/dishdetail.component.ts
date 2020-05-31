@@ -13,6 +13,11 @@ import { ModalDialogOptions, ModalDialogService } from 'nativescript-angular/mod
 import { CommentComponent } from '../comment/comment.component';
 import { HttpClient } from '@angular/common/http';
 import { baseURL } from '../shared/baseurl';
+import { Page } from 'tns-core-modules/ui/page/page';
+import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation";
+import { View, Color } from "tns-core-modules/ui/core/view";
+import { SwipeGestureEventData, SwipeDirection } from 'tns-core-modules/ui/gestures/gestures';
+import * as enums from "tns-core-modules/ui/enums";
 
 @Component({
     selector: 'app-dishdetail',
@@ -30,6 +35,12 @@ import { baseURL } from '../shared/baseurl';
     numcomments: number; 
     favorite: boolean;  
 
+    showComments: boolean = false;
+
+    cardImage: View;
+    commentList: View;
+    cardLayout: View;
+
     constructor(private dishservice: DishService,
       private route: ActivatedRoute,
       private routerExtensions: RouterExtensions,
@@ -37,6 +48,7 @@ import { baseURL } from '../shared/baseurl';
       private vcRef: ViewContainerRef,
       private modalService: ModalDialogService, 
       private http: HttpClient,
+      private page: Page, 
       @Inject('baseURL') private baseURL) { }
   
     ngOnInit() {
@@ -122,4 +134,96 @@ import { baseURL } from '../shared/baseurl';
              
           });
     }
+
+    onSwipe(args: SwipeGestureEventData) {
+
+      if (this.dish) {
+        this.cardImage = <View>this.page.getViewById<View>("cardImage");
+        this.cardLayout = <View>this.page.getViewById<View>("cardLayout");
+        this.commentList = <View>this.page.getViewById<View>("commentList");
+  
+        if (args.direction === SwipeDirection.up && !this.showComments ) {
+          this.animateUp();
+        }
+        else if (args.direction === SwipeDirection.down && this.showComments ) {
+          this.showComments = false;
+          this.animateDown();
+        }
+      }
+  
+    }
+
+    showAndHideComments() {
+      this.cardImage = <View>this.page.getViewById<View>("cardImage");
+      this.cardLayout = <View>this.page.getViewById<View>("cardLayout");
+      this.commentList = <View>this.page.getViewById<View>("commentList");
+
+      if (!this.showComments ) {
+        this.animateUp();
+      }
+      else if (this.showComments ) {
+        this.showComments = false;
+        this.animateDown();
+      }
+  }
+
+  animateUp() {
+    let definitions = new Array<AnimationDefinition>();
+    let a1: AnimationDefinition = {
+        target: this.cardImage,
+        scale: { x: 1, y: 0 },
+        translate: { x: 0, y: -200 },
+        opacity: 0,
+        duration: 500,
+        curve: enums.AnimationCurve.easeIn
+    };
+    definitions.push(a1);
+
+    let a2: AnimationDefinition = {
+        target: this.cardLayout,
+        backgroundColor: new Color("#ffc107"),
+        duration: 500,
+        curve: enums.AnimationCurve.easeIn
+    };
+    definitions.push(a2);
+
+    let animationSet = new Animation(definitions);
+
+    animationSet.play().then(() => {
+      this.showComments = true;
+    })
+    .catch((e) => {
+        console.log(e.message);
+    });
+  } 
+
+  animateDown() {
+    let definitions = new Array<AnimationDefinition>();
+    let a1: AnimationDefinition = {
+        target: this.cardImage,
+        scale: { x: 1, y: 1 },
+        translate: { x: 0, y: 0 },
+        opacity: 1,
+        duration: 500,
+        curve: enums.AnimationCurve.easeIn
+    };
+    definitions.push(a1);
+
+    let a2: AnimationDefinition = {
+        target: this.cardLayout,
+        backgroundColor: new Color("#ffffff"),
+        duration: 500,
+        curve: enums.AnimationCurve.easeIn
+    };
+    definitions.push(a2);
+
+    let animationSet = new Animation(definitions);
+
+    animationSet.play().then(() => {
+    })
+    .catch((e) => {
+        console.log(e.message);
+    });
+  } 
+  
   }
