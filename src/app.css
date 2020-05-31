@@ -35,21 +35,20 @@ action-bar{
     border-radius: 5;
 }
 .sidedrawer-left {
-    background-color:  white;
+    background-color: whitesmoke;
 }
 
 .sidedrawer-header {
-    background-color: whitesmoke; 
+    background-color: rgba(233, 203, 203, 0.568);
 }
 
-.sidedrawer-header .sidedrawer-header-image {
-    background-color: transparent;
-    margin: 0;
-}
 
 .sidedrawer-header .sidedrawer-header-brand {
     color: black;
-    font-size: 30;
+    font-size: 24;
+    margin-top: 15;
+    margin-right: 0;
+    text-align: center;
 }
 
 .sidedrawer-list-item {
@@ -63,8 +62,11 @@ action-bar{
 }
 
 .selected {
-    background-color: blanchedalmond;
+    background-color: black;
     color: rgb(250, 246, 248);
+}
+.color{
+    color: green;
 }
 .fa {
     font-family: FontAwesome, fontawesome-webfont;
