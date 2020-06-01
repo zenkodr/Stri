@@ -43,9 +43,9 @@
                         class="btn btn-rounded-sm btn-outline"></Button>
                 </GridLayout>
             </GridLayout>
+            <ScrollView orientation="vertical">
             <GridLayout class="input-field input-sides" rows="auto, auto, auto, auto, auto, auto, auto" columns="*, *"
                 [formGroup]="registerForm">
-
                 <Label class="label font-weight-bold" row="0" col="0"
                     text="First Name"></Label>
                 <TextField class="input input-border right" id="firstName" hint="First Name"
@@ -73,6 +73,7 @@
                 <Button class="btn btn-primary m-15" row="6" colSpan="2"
                     text="Register" (tap)="onRegisterSubmit()"></Button>
             </GridLayout>
+        </ScrollView>
         </StackLayout>
     </StackLayout>
 </TabView>
