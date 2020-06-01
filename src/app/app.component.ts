@@ -4,8 +4,6 @@ import * as app from "tns-core-modules/application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
-import {login, LoginResult} from 'tns-core-modules/ui/dialogs'; 
-import {getString, setString} from 'tns-core-modules/application-settings'; 
 
 @Component({
     selector: "ns-app",
@@ -45,23 +43,5 @@ export class AppComponent implements OnInit {
 
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
-    }
-
-    displayLoginDialog(){
-        let options = {
-            title: "Login", 
-            message: 'Type Your Credentials', 
-            userName: getString("userName", ""), 
-            password: getString("password", ""), 
-            okButtonText: "Login",
-            cancelButtonText: "Cancel"
-        }
-
-        login(options).then((loginResult: LoginResult) =>{
-            setString("userName", loginResult.userName); 
-            setString("password", loginResult.password)
-        },
-        ()=> {console.log('Login cancelled!');})
-    } 
-    
+    }    
 }
