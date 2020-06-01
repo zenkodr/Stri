@@ -3,11 +3,9 @@
         <GridLayout row="0" class="sidedrawer-header" rows="auto" columns="auto">
             <Label row="0" text="Restaurant 816" class="sidedrawer-header-brand" textWrap="true"></Label>
         </GridLayout>
-
         <ScrollView row="1">
             <StackLayout class="sidedrawer-content">
-
-                <GridLayout columns="* 100" class="sidedrawer-list-item" (tap)="displayLoginDialog()">
+                <GridLayout columns="*, 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/auth')" (tap)="onNavItemTap('/auth')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf090;"></Label>
                     <Label col="1" text="Login" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
@@ -15,36 +13,28 @@
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf015;"></Label>
                     <Label col="1" text="Home" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-               
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/about')" (tap)="onNavItemTap('/about')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf05a;"></Label>
                     <Label col="1" text="About Us" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-                
-
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/menu')" (tap)="onNavItemTap('/menu')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf022;"></Label>
                     <Label col="1" text="Menu" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/favorites')" (tap)="onNavItemTap('/favorites')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf004;"></Label>
                     <Label col="1" text="Favorites" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/reservation')" (tap)="onNavItemTap('/reservation')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf0f5;"></Label>
                     <Label col="1" text="Reserve" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-
                 <GridLayout columns="* 100" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/contact')" (tap)="onNavItemTap('/contact')">
                     <Label col="0" class="sidedrawer-list-item-text fa" text="&#xf2bb;"></Label>
                     <Label col="1" text="Contact Us" class="sidedrawer-list-item-text"></Label>
                 </GridLayout>
-
             </StackLayout>
         </ScrollView>
     </GridLayout>
-    
 <page-router-outlet tkMainContent></page-router-outlet>
 </RadSideDrawer>
