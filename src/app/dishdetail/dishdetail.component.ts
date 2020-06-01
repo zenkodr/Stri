@@ -17,9 +17,13 @@ import { Page } from 'tns-core-modules/ui/page/page';
 import { Animation, AnimationDefinition } from "tns-core-modules/ui/animation";
 import { View, Color } from "tns-core-modules/ui/core/view";
 import { SwipeGestureEventData, SwipeDirection } from 'tns-core-modules/ui/gestures/gestures';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import { ImageSource, fromUrl } from "tns-core-modules/image-source";
+
 import * as enums from "tns-core-modules/ui/enums";
 import * as app from "tns-core-modules/application"; 
-import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
+import * as SocialShare from "nativescript-social-share";
+
 
 @Component({
     selector: 'app-dishdetail',
@@ -70,18 +74,6 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
             errmess => this.errMess = <any>errmess); 
           }
 
-          addToFavorites(){
-            if(!this.favorite){
-              this.favorite  = this.favoriteService.addFavorite(this.dish.id);
-
-              const toast = new Toasty({text: 'Added dish ' + this.dish.id}); 
-              toast.setToastPosition(ToastPosition.CENTER); 
-              toast.setToastDuration(ToastDuration.LONG); 
-              toast.show();  
-              
-            }
-          }
-
         onDrawerButtonTap(): void {
             const sideDrawer = <RadSideDrawer>app.getRootView();
             sideDrawer.showDrawer();
@@ -95,20 +87,34 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
           title: "Actions",
           message: "Select an Action",
           cancelButtonText: "Cancel",
-          actions: ["Add to Favorites", "Add Comment"]
+          actions: ["Add to Favorites", "Add Comment", "Social Sharing"]
       };
 
       action(options).then((result) => {
           console.log(result);
-          switch(result) {
+         switch(result) {
               case "Add to Favorites":
                   this.addToFavorites();
                   break;
               case "Add Comment":
                   this.showCommentModalForm();
                   break;
-          }
+              case "Social Sharing": 
+                   this.socialShare(); 
+         }       
       });
+  }
+
+  addToFavorites(){
+    if(!this.favorite){
+      this.favorite  = this.favoriteService.addFavorite(this.dish.id);
+
+      const toast = new Toasty({text: 'Added dish ' + this.dish.id}); 
+      toast.setToastPosition(ToastPosition.CENTER); 
+      toast.setToastDuration(ToastDuration.LONG); 
+      toast.show();  
+      
+    }
   }
 
   showCommentModalForm(): void {
@@ -142,6 +148,18 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
           });
     }
 
+    socialShare() {
+      SocialShare.shareUrl("https://www.nativescript.org/", "Home of NativeScript", "How would you like to share this url?");
+
+      /* let image: ImageSource;
+
+    fromUrl(this.BaseURL + this.dish.image)
+     .then((img: ImageSource) => {
+       image = img; 
+        SocialShare.shareImage(image, "How would you like to share this image?")
+      })
+     .catch(()=> { console.log('Error loading image'); });*/
+    }
     onSwipe(args: SwipeGestureEventData) {
 
       if (this.dish) {
