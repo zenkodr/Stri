@@ -1,23 +1,30 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
 import * as app from "tns-core-modules/application"; 
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
 import { filter } from "rxjs/operators";
+import { platformService } from "./services/platform.service";
 
 @Component({
     selector: "ns-app",
     templateUrl: "app.component.html"
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit , OnDestroy{
     private _activatedUrl: string;
     private _sideDrawerTransition: DrawerTransitionBase;
 
-    constructor(private router: Router, private routerExtensions: RouterExtensions) {
+    constructor(private router: Router, private routerExtensions: RouterExtensions, private platformService: platformService) {
         // Use the component constructor to inject services.
     }
 
     ngOnInit(): void {
+        this.platformService.prinPlatformInfo(); 
+        this.platformService.startMonitoringNetwork()
+             .subscribe((message: string)=> {
+                 console.log(message);  
+             }); 
+
         this._activatedUrl = "/menu";
         this._sideDrawerTransition = new SlideInOnTopTransition();
 
@@ -43,5 +50,9 @@ export class AppComponent implements OnInit {
 
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
-    }    
+    }
+    
+    ngOnDestroy(){
+        this.platformService.stopMonitoringNetwork(); 
+    }
 }
