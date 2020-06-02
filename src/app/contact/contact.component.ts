@@ -3,6 +3,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application"; 
 import * as Email from 'nativescript-email';
+import * as Phone from 'nativescript-phone';
 
 @Component({
     selector: 'app-contact', 
@@ -40,5 +41,9 @@ export class ContactComponent implements OnInit {
                 console.log('No email configured in this device');
             }
         })
+    }
+
+    callRestaurant() {
+        Phone.dial("+21629799125", true)
     }
 }
