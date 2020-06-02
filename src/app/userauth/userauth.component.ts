@@ -7,6 +7,7 @@ import { Image } from 'tns-core-modules/ui/image';
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as camera from 'nativescript-camera';
 import * as app from "tns-core-modules/application";
+import * as ImagePicker from "nativescript-imagepicker";
 
 @Component({
     moduleId: module.id,
@@ -56,6 +57,20 @@ export class UserAuthComponent implements OnInit {
                 .catch((err) => console.log('Error -> ' + err.message));
         }
 
+    }
+
+    getFromLibrary() {
+
+        let context = ImagePicker.create({
+            mode: "single" // use multiple for multiple selections.
+        }); 
+
+        context.authorize()
+               .then(()=> context.present())
+               .then(pick => pick.forEach(imageFromGallery => {
+                   let image = <Image>this.page.getViewById<Image>("myPicture"); 
+                   image.src = imageFromGallery; 
+               })); 
     }
 
     register() {
